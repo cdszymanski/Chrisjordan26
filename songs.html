@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Requests | Christopher & Jordan | September 19, 2026</title>
+    <meta name="description" content="Request songs for the wedding reception of Christopher and Jordan.">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="monogram"><a href="index.html">C & J</a></div>
+        <div class="domain">CHRISJORDAN26.COM</div>
+    </header>
+
+    <nav class="nav">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rsvp.html">RSVP</a></li>
+            <li><a href="songs.html" class="active">Song Requests</a></li>
+        </ul>
+    </nav>
+
+    <section class="section">
+        <h2 class="section-title">Song Requests</h2>
+        <p class="section-subtitle">Help us create the perfect playlist for our celebration!</p>
+
+        <!-- Recent Songs Section -->
+        <div id="recent-songs-section">
+            <div class="recent-songs">
+                <h3>Recently Requested</h3>
+                <div id="recent-songs-list">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading recent requests...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Song Request Form -->
+        <div id="song-form-section">
+            <div class="form-container">
+                <form id="song-form">
+                    <div class="form-group">
+                        <label for="song-title">Song Title <span class="required">*</span></label>
+                        <input
+                            type="text"
+                            id="song-title"
+                            name="songTitle"
+                            class="form-input"
+                            placeholder="Enter song title"
+                            maxlength="100"
+                            required
+                        >
+                        <div class="char-count"><span id="title-count">0</span>/100</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="artist">Artist Name <span class="required">*</span></label>
+                        <input
+                            type="text"
+                            id="artist"
+                            name="artist"
+                            class="form-input"
+                            placeholder="Enter artist name"
+                            maxlength="100"
+                            required
+                        >
+                        <div class="char-count"><span id="artist-count">0</span>/100</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="genre">Genre</label>
+                        <select id="genre" name="genre" class="form-select">
+                            <option value="">Select a genre (optional)</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Country">Country</option>
+                            <option value="R&B">R&B</option>
+                            <option value="Hip-Hop">Hip-Hop</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Classic">Classic</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="requester">Your Name</label>
+                        <input
+                            type="text"
+                            id="requester"
+                            name="requester"
+                            class="form-input"
+                            placeholder="Optional - let us know who requested this!"
+                            maxlength="50"
+                        >
+                        <div class="char-count"><span id="requester-count">0</span>/50</div>
+                    </div>
+
+                    <div class="turnstile-container">
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAACORLw3FjQ0PvAre" data-callback="onTurnstileSuccess"></div>
+                    </div>
+
+                    <div id="form-error" class="message message-error hidden"></div>
+                    <div id="duplicate-warning" class="message message-info hidden"></div>
+
+                    <button type="submit" id="submit-song-btn" class="btn btn-primary btn-block" disabled>
+                        Submit Song Request
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Success Message -->
+        <div id="success-section" class="hidden">
+            <div class="message message-success" style="max-width: 500px; margin: 0 auto; padding: 40px;">
+                <h3 style="font-size: 24px; margin-bottom: 20px; color: #27ae60;">Song Added!</h3>
+                <p id="success-message" style="font-size: 16px; line-height: 1.8;"></p>
+                <div class="divider"></div>
+                <button type="button" id="add-another-btn" class="btn btn-secondary">
+                    Request Another Song
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading-section" class="hidden">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Submitting your request...</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Christopher & Jordan | September 19, 2026</p>
+    </footer>
+
+    <script src="js/songs.js"></script>
+</body>
+</html>
