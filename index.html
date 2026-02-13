@@ -22,15 +22,48 @@
     </nav>
 
     <section class="section">
-        <h2 class="section-title">Photo Gallery</h2>
-        <div class="gallery-content">
-            <p class="coming-soon">
-                We will be sharing photos after the wedding for family and friends to enjoy and download.<br>
-                Please check back after the celebration!
-            </p>
-            <div class="link-placeholder">
-                📸 Dropbox Gallery Link<br>
-                <small>(Available after September 19, 2026)</small>
+        <h2 class="section-title">Engagement Photos</h2>
+        <div class="photo-gallery">
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="images/engagement-1.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-4.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-5.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-6.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-2.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-3.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-7.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-8.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+            </div>
+        </div>
+        <!-- Lightbox overlay -->
+        <div class="lightbox hidden" id="lightbox">
+            <button class="lightbox-close" aria-label="Close">&times;</button>
+            <button class="lightbox-prev" aria-label="Previous">&lsaquo;</button>
+            <img class="lightbox-img" id="lightbox-img" src="" alt="">
+            <button class="lightbox-next" aria-label="Next">&rsaquo;</button>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="countdown-section">
+            <h2 class="section-title">Counting Down</h2>
+            <div class="countdown" id="countdown">
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="countdown-days">---</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="countdown-hours">--</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="countdown-minutes">--</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="countdown-seconds">--</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
             </div>
         </div>
     </section>
@@ -108,5 +141,76 @@
     <footer>
         <p>Christopher & Jordan | September 19, 2026</p>
     </footer>
+
+    <script>
+        // Countdown Timer
+        (function() {
+            const weddingDate = new Date('2026-09-19T14:00:00-04:00');
+            function update() {
+                const now = new Date();
+                const diff = weddingDate - now;
+                if (diff <= 0) {
+                    document.getElementById('countdown').innerHTML = '<p style="font-size:24px;color:#d4af37;font-style:italic;">Today is the day!</p>';
+                    return;
+                }
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById('countdown-days').textContent = days;
+                document.getElementById('countdown-hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('countdown-minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('countdown-seconds').textContent = String(seconds).padStart(2, '0');
+            }
+            update();
+            setInterval(update, 1000);
+        })();
+
+        // Lightbox
+        (function() {
+            const images = document.querySelectorAll('.gallery-item img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            let currentIndex = 0;
+
+            images.forEach(function(img, i) {
+                img.addEventListener('click', function() {
+                    currentIndex = i;
+                    lightboxImg.src = img.src;
+                    lightbox.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            lightbox.querySelector('.lightbox-close').addEventListener('click', close);
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) close();
+            });
+
+            lightbox.querySelector('.lightbox-prev').addEventListener('click', function(e) {
+                e.stopPropagation();
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                lightboxImg.src = images[currentIndex].src;
+            });
+
+            lightbox.querySelector('.lightbox-next').addEventListener('click', function(e) {
+                e.stopPropagation();
+                currentIndex = (currentIndex + 1) % images.length;
+                lightboxImg.src = images[currentIndex].src;
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (lightbox.classList.contains('hidden')) return;
+                if (e.key === 'Escape') close();
+                if (e.key === 'ArrowLeft') lightbox.querySelector('.lightbox-prev').click();
+                if (e.key === 'ArrowRight') lightbox.querySelector('.lightbox-next').click();
+            });
+
+            function close() {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        })();
+    </script>
 </body>
 </html>
