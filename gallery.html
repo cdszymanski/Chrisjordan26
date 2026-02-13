@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Christopher & Jordan | September 19, 2026</title>
+    <meta name="description" content="Engagement photos of Christopher and Jordan.">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="monogram"><a href="index.html">C & J</a></div>
+        <div class="domain">CHRISJORDAN26.COM</div>
+    </header>
+
+    <nav class="nav">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html" class="active">Gallery</a></li>
+            <li><a href="rsvp.html">RSVP</a></li>
+            <li><a href="songs.html">Song Requests</a></li>
+        </ul>
+    </nav>
+
+    <section class="section">
+        <h2 class="section-title">Engagement Photos</h2>
+        <div class="photo-gallery">
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="images/engagement-1.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-4.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-5.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-6.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-2.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-3.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-7.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+                <div class="gallery-item"><img src="images/engagement-8.jpg" alt="Christopher and Jordan" loading="lazy"></div>
+            </div>
+        </div>
+        <!-- Lightbox overlay -->
+        <div class="lightbox hidden" id="lightbox">
+            <button class="lightbox-close" aria-label="Close">&times;</button>
+            <button class="lightbox-prev" aria-label="Previous">&lsaquo;</button>
+            <img class="lightbox-img" id="lightbox-img" src="" alt="">
+            <button class="lightbox-next" aria-label="Next">&rsaquo;</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>Christopher & Jordan | September 19, 2026</p>
+    </footer>
+
+    <script>
+        // Lightbox
+        (function() {
+            const images = document.querySelectorAll('.gallery-item img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            let currentIndex = 0;
+
+            images.forEach(function(img, i) {
+                img.addEventListener('click', function() {
+                    currentIndex = i;
+                    lightboxImg.src = img.src;
+                    lightbox.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            lightbox.querySelector('.lightbox-close').addEventListener('click', close);
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) close();
+            });
+
+            lightbox.querySelector('.lightbox-prev').addEventListener('click', function(e) {
+                e.stopPropagation();
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                lightboxImg.src = images[currentIndex].src;
+            });
+
+            lightbox.querySelector('.lightbox-next').addEventListener('click', function(e) {
+                e.stopPropagation();
+                currentIndex = (currentIndex + 1) % images.length;
+                lightboxImg.src = images[currentIndex].src;
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (lightbox.classList.contains('hidden')) return;
+                if (e.key === 'Escape') close();
+                if (e.key === 'ArrowLeft') lightbox.querySelector('.lightbox-prev').click();
+                if (e.key === 'ArrowRight') lightbox.querySelector('.lightbox-next').click();
+            });
+
+            function close() {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        })();
+    </script>
+</body>
+</html>

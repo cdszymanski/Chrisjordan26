@@ -371,42 +371,20 @@ body {
 .lightbox-next { right: 10px; }
 
 /* --------------------------------------------------------------------------
-   Countdown Timer
+   Countdown Timer (inline)
    -------------------------------------------------------------------------- */
-.countdown-section {
+.countdown-inline {
     text-align: center;
+    padding: 30px 20px;
+    font-size: 18px;
+    color: #666;
+    letter-spacing: 1px;
+    border-top: 1px solid #f0f0f0;
 }
 
-.countdown {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.countdown-unit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 90px;
-}
-
-.countdown-number {
-    font-size: 48px;
-    font-weight: 300;
-    background: linear-gradient(135deg, #d4af37 0%, #f4e5b8 50%, #d4af37 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.2;
-}
-
-.countdown-label {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #999;
-    margin-top: 5px;
+.countdown-time {
+    font-weight: 700;
+    color: #c0392b;
 }
 
 /* --------------------------------------------------------------------------
@@ -934,16 +912,8 @@ footer {
         gap: 12px;
     }
 
-    .countdown {
-        gap: 15px;
-    }
-
-    .countdown-number {
-        font-size: 36px;
-    }
-
-    .countdown-unit {
-        min-width: 70px;
+    .countdown-inline {
+        font-size: 15px;
     }
 
     .lightbox-prev,
