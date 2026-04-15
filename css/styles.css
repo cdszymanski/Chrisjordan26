@@ -395,6 +395,19 @@ body {
     line-height: 2;
 }
 
+.registry-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.registry-btn {
+    min-width: 180px;
+    text-align: center;
+}
+
 .coming-soon {
     font-style: italic;
     margin: 20px 0;
