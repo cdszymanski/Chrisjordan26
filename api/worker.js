@@ -138,7 +138,7 @@ async function handleValidateCode(request, env, corsHeaders) {
     // Check if code is already used
     if (fields.Used) {
         return jsonResponse({
-            error: 'This code has already been used. If you need to update your RSVP, please contact us.'
+            error: 'This code has already been used. Please contact Chris at (716) 353-0224 if you need to make any changes.'
         }, 400, corsHeaders);
     }
 

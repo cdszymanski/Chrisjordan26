@@ -30,6 +30,7 @@
         inviteCode: document.getElementById('invite-code'),
         verifyBtn: document.getElementById('verify-code-btn'),
         codeError: document.getElementById('code-error'),
+        codeErrorTop: document.getElementById('code-error-top'),
         guestNamesDisplay: document.getElementById('guest-names-display'),
         guestCountDisplay: document.getElementById('guest-count-display'),
         rsvpForm: document.getElementById('rsvp-form'),
@@ -108,6 +109,7 @@
         let value = e.target.value.replace(/[^a-zA-Z0-9-]/g, '');
         e.target.value = value.toUpperCase();
         hideError(elements.codeError);
+        if (elements.codeErrorTop) hideError(elements.codeErrorTop);
     }
 
     // Verify invite code
@@ -156,6 +158,7 @@
 
         } catch (error) {
             showError(elements.codeError, error.message);
+            if (elements.codeErrorTop) showError(elements.codeErrorTop, error.message);
             hideLoading();
         }
     }
