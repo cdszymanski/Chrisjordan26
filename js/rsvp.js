@@ -366,6 +366,7 @@
 
     function hideLoading() {
         elements.loadingSection.classList.add('hidden');
+        elements.codeEntrySection.classList.remove('hidden');
     }
 
     function showRsvpForm() {
