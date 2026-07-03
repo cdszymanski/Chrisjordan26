@@ -212,7 +212,7 @@ async function handleSubmitRSVP(request, env, corsHeaders) {
             'Dietary Restrictions': dietary || '',
             'Special Notes': notes || '',
             'Email for Updates': email || '',
-            'Submission Date': new Date().toISOString(),
+            'Submission Date': new Date().toISOString().split('T')[0],
             'Used': true
         }
     };
