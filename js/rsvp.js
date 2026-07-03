@@ -295,7 +295,8 @@
                 guestCount: guestCount,
                 attendingNames: attendingNames.length > 0 ? attendingNames.join(', ') : currentGuests.names,
                 dietary: formData.get('dietary') || '',
-                notes: formData.get('notes') || ''
+                notes: formData.get('notes') || '',
+                email: formData.get('email') || ''
             };
 
             // In test mode, simulate success

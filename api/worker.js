@@ -167,7 +167,7 @@ async function handleSubmitRSVP(request, env, corsHeaders) {
     }
 
     const body = await request.json();
-    const { code, attending, guestCount, attendingNames, dietary, notes } = body;
+    const { code, attending, guestCount, attendingNames, dietary, notes, email } = body;
 
     if (!code) {
         return jsonResponse({ error: 'Code is required' }, 400, corsHeaders);
@@ -211,6 +211,7 @@ async function handleSubmitRSVP(request, env, corsHeaders) {
             'Attending Names': attendingNames || '',
             'Dietary Restrictions': dietary || '',
             'Special Notes': notes || '',
+            'Email for Updates': email || '',
             'Submission Date': new Date().toISOString(),
             'Used': true
         }
