@@ -1,0 +1,17 @@
+name = "wedding-api"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Production variables - non-sensitive
+[vars]
+ALLOWED_ORIGIN = "https://chrisjordan26.com"
+
+# Sensitive variables should be added via CLI:
+# wrangler secret put AIRTABLE_API_KEY
+# wrangler secret put AIRTABLE_BASE_ID
+# wrangler secret put TURNSTILE_SECRET_KEY
+
+# Custom domain route
+routes = [
+  { pattern = "chrisjordan26.com/api/*", zone_name = "chrisjordan26.com" }
+]

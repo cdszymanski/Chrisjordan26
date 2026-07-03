@@ -1,0 +1,39 @@
+WEDDING WEBSITE - REMAINING TASKS
+==================================
+
+1. DELETE DUPLICATE AKURNIK RECORD
+   - There are 2 AKURNIK codes in Airtable
+   - Keep the one with Max Guests = 4 (Andrea Kurnik, Guest, Ethan, Kristoff)
+   - Delete the one with Max Guests = 2
+
+2. VERIFY TOTAL GUEST COUNT
+   - After fixing duplicate, should be ~184 guests total
+   - 86 invitations
+
+3. TEST THE FULL RSVP FLOW
+   - Use code "test" (Rob & Julie Pawlak) to verify everything works
+   - Check that data saves to Airtable correctly
+
+4. GUESTS TO ADD
+   - Fr. Ward + Wife (officiant) - wife's name TBD
+   - Elizabeth Drumpsta + Husband - husband's name TBD
+
+5. DESIGN IMPROVEMENTS (make more professional)
+   [ ] Add engagement/couple photos to homepage
+   [ ] Add wedding timeline/schedule (ceremony time, cocktail hour, reception)
+   [ ] Add accommodations/hotel info for out-of-town guests
+   [ ] Add FAQ section (parking, kids allowed?, what to expect)
+   [ ] Add countdown timer to wedding date
+   [ ] Consider custom fonts (elegant script/serif for headings)
+   [ ] Add "Our Story" section (how you met, proposal)
+
+5. GENERATE INVITE CODES FOR PRINTING
+   - Run: cd /home/chris/wedding-website/scripts && node generate-codes.js
+   - Creates CSV for printing on invitations
+
+WEBSITE IS LIVE AT: https://chrisjordan26.com
+AIRTABLE BASE: https://airtable.com/appmmGVjwwHiGMVh1
+
+CREDENTIALS (keep secure):
+- Airtable Base ID: appmmGVjwwHiGMVh1
+- Turnstile Site Key: 0x4AAAAAACORLw3FjQ0PvAre

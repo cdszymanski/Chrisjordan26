@@ -1,0 +1,22 @@
+[
+  {
+    "names": "Mom & Dad Szymanski",
+    "maxGuests": 2
+  },
+  {
+    "names": "Mom & Dad Pawlak",
+    "maxGuests": 2
+  },
+  {
+    "names": "Grandma Rose",
+    "maxGuests": 1
+  },
+  {
+    "names": "Uncle Bob & Aunt Mary Smith, Cousin Tim",
+    "maxGuests": 3
+  },
+  {
+    "names": "Best Friend & Guest",
+    "maxGuests": 2
+  }
+]

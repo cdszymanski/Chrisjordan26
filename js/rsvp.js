@@ -19,7 +19,6 @@
     };
 
     // State
-    let turnstileToken = null;
     let currentGuests = null;
 
     // DOM Elements
@@ -111,24 +110,12 @@
         hideError(elements.codeError);
     }
 
-    // Turnstile callback
-    window.onTurnstileSuccess = function(token) {
-        turnstileToken = token;
-        elements.verifyBtn.disabled = false;
-    };
-
     // Verify invite code
     async function verifyCode() {
         const code = elements.inviteCode.value.trim();
 
         if (!code) {
             showError(elements.codeError, 'Please enter your invitation code.');
-            return;
-        }
-
-        // In production, require Turnstile token
-        if (!CONFIG.testMode && !turnstileToken) {
-            showError(elements.codeError, 'Please complete the security check.');
             return;
         }
 
@@ -149,7 +136,6 @@
                     },
                     body: JSON.stringify({
                         code: code.toLowerCase(), // Send lowercase for case-insensitive matching
-                        turnstileToken: turnstileToken
                     })
                 });
 
@@ -309,8 +295,7 @@
                 guestCount: guestCount,
                 attendingNames: attendingNames.length > 0 ? attendingNames.join(', ') : currentGuests.names,
                 dietary: formData.get('dietary') || '',
-                notes: formData.get('notes') || '',
-                turnstileToken: turnstileToken
+                notes: formData.get('notes') || ''
             };
 
             // In test mode, simulate success

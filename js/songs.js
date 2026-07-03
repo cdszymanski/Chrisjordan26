@@ -14,7 +14,6 @@
     };
 
     // State
-    let turnstileToken = null;
     let recentSongs = [];
 
     // DOM Elements
@@ -84,12 +83,6 @@
             countEl.parentElement.classList.add('warning');
         }
     }
-
-    // Turnstile callback
-    window.onTurnstileSuccess = function(token) {
-        turnstileToken = token;
-        elements.submitBtn.disabled = false;
-    };
 
     // Load recent songs
     async function loadRecentSongs() {
@@ -203,12 +196,6 @@
             return;
         }
 
-        // In production, require Turnstile token
-        if (!CONFIG.testMode && !turnstileToken) {
-            showError('Please complete the security check.');
-            return;
-        }
-
         showLoading();
         hideError();
 
@@ -217,8 +204,7 @@
                 title: title,
                 artist: artist,
                 genre: genre || null,
-                requester: requester || null,
-                turnstileToken: turnstileToken
+                requester: requester || null
             };
 
             if (CONFIG.testMode) {
@@ -285,13 +271,6 @@
         elements.requesterCount.textContent = '0';
         hideDuplicateWarning();
         hideError();
-
-        // Reset Turnstile
-        if (window.turnstile) {
-            turnstile.reset();
-            turnstileToken = null;
-            elements.submitBtn.disabled = true;
-        }
 
         // Show form again
         elements.successSection.classList.add('hidden');
