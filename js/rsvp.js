@@ -199,6 +199,12 @@
             elements.individualGuests.querySelectorAll('button').forEach(btn => {
                 btn.addEventListener('click', handleIndividualGuestToggle);
             });
+
+            // Default all guests to "attending" (pre-select Yes)
+            elements.individualGuests.querySelectorAll('.guest-yes').forEach(btn => {
+                btn.classList.add('selected-yes');
+            });
+            updateGuestCountFromIndividual();
         }
     }
 
